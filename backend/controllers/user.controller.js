@@ -59,7 +59,7 @@ export const login = async (req, res) => {
       });
     }
     //check role is co`rrect or not
-    if (role === user.role) {
+    if (role !== user.role) {
       return res.status(400).json({
         message: "Invalid role",
         success: false,
@@ -138,19 +138,19 @@ export const updateProfile = async (req, res) => {
     if (skills) user.profile.skills = skillsArray;
     await user.save();
     user = {
-        _id: user._id,
-        fullname: user.fullname,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        role: user.role,
-        profile: user.profile
-    }
+      _id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      role: user.role,
+      profile: user.profile,
+    };
 
     return res.status(200).json({
-        message:"Profile updated successfully.",
-        user,
-        success:true
-    })
+      message: "Profile updated successfully.",
+      user,
+      success: true,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
