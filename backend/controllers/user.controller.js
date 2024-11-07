@@ -61,7 +61,7 @@ export const login = async (req, res) => {
     //check role is co`rrect or not
     if (role !== user.role) {
       return res.status(400).json({
-        message: "Invalid role",
+        message: "Account doesn't exist with current role",
         success: false,
       });
     }
@@ -114,16 +114,13 @@ export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
     const file = req.file;
-    if (!fullname || !email || !phoneNumber || !bio || !skills) {
-      return res.status(400).json({
-        message: "All fields are required",
-        success: false,
-      });
+    let skillsArray;
+    if (skills) {
+      skillsArray = skills.split(",");
     }
-    let skillsArray = skills.split(",");
-    const userId = req.Id;
+    const userId = req.id; // middleware authentication
+    let user = await User.findById(userId);
 
-    let user = await User.findById(req.userId);
     if (!user) {
       return res.status(400).json({
         message: "User not found.",
