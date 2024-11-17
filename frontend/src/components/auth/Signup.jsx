@@ -39,7 +39,7 @@ const Signup = () => {
       formData.append("file", input.file);
     }
     try {
-      dispatch(setLoading(true));
+      // dispatch(setLoading(true));
       const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
@@ -50,6 +50,7 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.message);
     }
   };
   return (
