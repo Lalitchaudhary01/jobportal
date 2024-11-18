@@ -141,7 +141,7 @@ const Signup = () => {
           <Button type="submit" className="w-full my-4">
             Signup
           </Button>
-          {loading ? (
+          {/* {loading ? (
             <Button className="w-full my-4">
               {" "}
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
@@ -150,7 +150,7 @@ const Signup = () => {
             <Button type="submit" className="w-full my-4">
               Signup
             </Button>
-          )}
+          )} */}
           <span className="text-sm">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-600">
