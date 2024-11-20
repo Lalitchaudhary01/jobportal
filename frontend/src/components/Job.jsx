@@ -38,7 +38,7 @@ const Job = () => {
           Positions
         </Badge>
         <Badge className={"text-[#F83002] font-bold"} variant="ghost">
-          joob type
+          job type
         </Badge>
         <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
           LPA
