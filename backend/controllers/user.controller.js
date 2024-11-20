@@ -27,9 +27,6 @@ export const register = async (req, res) => {
       phoneNumber,
       password: hashedPassword,
       role,
-      profile: {
-        profilePhoto: cloudResponse.secure_url,
-      },
     });
 
     return res.status(201).json({
@@ -40,6 +37,7 @@ export const register = async (req, res) => {
     console.log(error);
   }
 };
+// login
 
 export const login = async (req, res) => {
   try {
@@ -64,7 +62,7 @@ export const login = async (req, res) => {
         success: false,
       });
     }
-    //check role is co`rrect or not
+    //check role is correct or not
     if (role !== user.role) {
       return res.status(400).json({
         message: "Account doesn't exist with current role",
