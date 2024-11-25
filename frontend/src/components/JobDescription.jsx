@@ -3,6 +3,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 const JobDescription = () => {
+  // isApplied = true;
   return (
     <div className="max-w-7xl mx-auto my-10">
       <div className="flex items-center justify-between">
@@ -31,6 +32,7 @@ const JobDescription = () => {
         >
           {isApplied ? "Already Applied" : "Apply Now"}
         </Button> */}
+        <Button> Apply now</Button>
       </div>
       <h1 className="border-b-2 border-b-gray-300 font-medium py-4">
         Job Description

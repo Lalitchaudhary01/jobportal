@@ -53,7 +53,6 @@ const Login = () => {
       navigate("/");
     }
   }, []);
-
   return (
     <div>
       <Navbar />
@@ -110,9 +109,6 @@ const Login = () => {
               </div>
             </RadioGroup>
           </div>
-          {/* <Button type="submit" className="w-full my-4">
-            Login
-          </Button> */}
           {loading ? (
             <Button className="w-full my-4">
               {" "}
