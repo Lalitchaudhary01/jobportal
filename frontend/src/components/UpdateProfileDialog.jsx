@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,8 +8,11 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { Loader2 } from "lucide-react";
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
+  const [loading, setLoading] = useState(false);
   return (
     <div>
       <Dialog open={open}>
@@ -49,9 +52,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                {/* <Label htmlFor="number" className="text-right">
+                <Label htmlFor="number" className="text-right">
                   Number
-                </Label> */}
+                </Label>
                 <Input
                   id="number"
                   name="number"
@@ -99,9 +102,16 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
               </div>
             </div>
             <DialogFooter>
-              {/* {
-                            loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">Update</Button>
-                        } */}
+              {loading ? (
+                <Button className="w-full my-4">
+                  {" "}
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
+                </Button>
+              ) : (
+                <Button type="submit" className="w-full my-4">
+                  Update
+                </Button>
+              )}
             </DialogFooter>
           </form>
         </DialogContent>
