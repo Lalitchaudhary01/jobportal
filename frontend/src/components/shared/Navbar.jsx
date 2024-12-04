@@ -15,20 +15,20 @@ const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const logoutHandler = async () => {
-    try {
-      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
-        withCredentials: true,
-      });
-      if (res.data.success) {
-        dispatch(setUser(null));
-        navigate("/");
-        toast.success(res.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
-    }
+  // const logoutHandler = async () => {
+  //   try {
+  //     const res = await axios.get(`${USER_API_END_POINT}/logout`, {
+  //       withCredentials: true,
+  //     });
+  //     if (res.data.success) {
+  //       dispatch(setUser(null));
+  //       navigate("/");
+  //       toast.success(res.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error(error.response.data.message);
+  //   }
   };
   return (
     <div className="bg-white">
@@ -76,14 +76,14 @@ const Navbar = () => {
                   <div className="flex gap-4 space-y-2">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src={user?.profile?.profilePhoto}
                         alt="@shadcn"
                       />
                     </Avatar>
                     <div>
-                      <h4 className="font-medium">Lalit chaudhary</h4>
+                      <h4 className="font-medium">{user?.fullname}</h4>
                       <p className="text-sm text-muted-foreground">
-                        web developer f{" "}
+                        {user?.profile?.bio}
                       </p>
                     </div>
                   </div>
