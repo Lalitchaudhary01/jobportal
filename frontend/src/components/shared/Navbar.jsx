@@ -15,20 +15,20 @@ const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const logoutHandler = async () => {
-  //   try {
-  //     const res = await axios.get(`${USER_API_END_POINT}/logout`, {
-  //       withCredentials: true,
-  //     });
-  //     if (res.data.success) {
-  //       dispatch(setUser(null));
-  //       navigate("/");
-  //       toast.success(res.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error(error.response.data.message);
-  //   }
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
   };
   return (
     <div className="bg-white">
