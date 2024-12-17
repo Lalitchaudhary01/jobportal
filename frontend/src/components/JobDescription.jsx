@@ -98,11 +98,15 @@ const JobDescription = () => {
         </h1>
         <h1 className="font-bold my-1">
           Total Applicants:{" "}
-          <span className="pl-4 font-normal text-gray-800">2</span>
+          <span className="pl-4 font-normal text-gray-800">
+            {singleJob?.applications?.length}
+          </span>
         </h1>
         <h1 className="font-bold my-1">
           Posted Date:{" "}
-          <span className="pl-4 font-normal text-gray-800">12-2-330</span>
+          <span className="pl-4 font-normal text-gray-800">
+            {singleJob?.createdAt.split("T")[0]}
+          </span>
         </h1>
       </div>
     </div>
