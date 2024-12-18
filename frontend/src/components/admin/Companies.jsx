@@ -4,8 +4,11 @@ import { Input } from "../ui/input";
 import Navbar from "../shared/Navbar";
 import CompaniesTable from "./CompaniesTable";
 import { useNavigate } from "react-router-dom";
+import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 
 const Companies = () => {
+  useGetAllCompanies();
+  const [input, setInput] = useState("");
   const navigate = useNavigate();
   return (
     <div>
@@ -15,7 +18,7 @@ const Companies = () => {
           <Input
             className="w-fit"
             placeholder="Filter by name"
-            // onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
           <Button onClick={() => navigate("/admin/companies/create")}>
             {" "}
