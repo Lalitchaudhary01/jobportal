@@ -33,16 +33,16 @@ const Navbar = () => {
 
   return (
     <div className="bg-gradient-to-r from-gray-100 to-gray-200 shadow-md">
-      <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-6">
+      <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div>
-          <h1 className="text-3xl font-extrabold text-gray-800">
+          <h1 className="text-2xl font-extrabold text-gray-800 md:text-3xl">
             Hire<span className="text-[#FF4500]">Sphere</span>
           </h1>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
           <ul className="flex font-medium items-center gap-6 text-gray-700">
             {user && user.role === "recruiter" ? (
               <>
@@ -77,8 +77,10 @@ const Navbar = () => {
               </>
             )}
           </ul>
+        </div>
 
-          {/* Auth Section */}
+        {/* Auth Section */}
+        <div className="flex items-center gap-3">
           {!user ? (
             <div className="flex items-center gap-3">
               <Link to="/login">
@@ -143,6 +145,77 @@ const Navbar = () => {
               </PopoverContent>
             </Popover>
           )}
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="p-2">
+                Menu
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-64">
+              <ul className="flex flex-col gap-4 text-gray-700">
+                {user && user.role === "recruiter" ? (
+                  <>
+                    <li>
+                      <Link
+                        to="/admin/companies"
+                        className="hover:text-[#FF4500]"
+                      >
+                        Companies
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/admin/jobs" className="hover:text-[#FF4500]">
+                        Jobs
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link to="/" className="hover:text-[#FF4500]">
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/jobs" className="hover:text-[#FF4500]">
+                        Jobs
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/browse" className="hover:text-[#FF4500]">
+                        Browse
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {!user ? (
+                  <>
+                    <li>
+                      <Link to="/login" className="hover:text-[#FF4500]">
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/signup" className="hover:text-[#FF4500]">
+                        Signup
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <li
+                    onClick={logoutHandler}
+                    className="cursor-pointer hover:text-[#FF4500]"
+                  >
+                    Logout
+                  </li>
+                )}
+              </ul>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </div>

@@ -38,14 +38,18 @@ const Job = ({ job }) => {
           </Avatar>
         </Button>
         <div>
-          <h1 className="text-xl font-semibold text-gray-800">{job?.company?.name}</h1>
+          <h1 className="text-xl font-semibold text-gray-800">
+            {job?.company?.name}
+          </h1>
           <p className="text-sm text-gray-500">India</p>
         </div>
       </div>
 
       {/* Job Title and Description */}
       <div className="mb-4">
-        <h1 className="text-2xl font-semibold text-gray-800 my-2">{job?.title}</h1>
+        <h1 className="text-2xl font-semibold text-gray-800 my-2">
+          {job?.title}
+        </h1>
         <p className="text-sm text-gray-700">{job?.description}</p>
       </div>
 
