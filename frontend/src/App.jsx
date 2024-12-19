@@ -1,8 +1,8 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home";
+import Navbar from "./components/shared/Navbar";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import Browse from "./components/Browse";
 import Profile from "./components/Profile";
@@ -11,9 +11,9 @@ import Companies from "./components/admin/Companies";
 import CompanyCreate from "./components/admin/CompanyCreate";
 import CompanySetup from "./components/admin/CompanySetup";
 import AdminJobs from "./components/admin/AdminJobs";
-import AdminJobsTable from "./components/admin/AdminJobsTable";
 import PostJob from "./components/admin/PostJob";
 import Applicants from "./components/admin/Applicants";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 const appRouter = createBrowserRouter([
   {
@@ -36,7 +36,6 @@ const appRouter = createBrowserRouter([
     path: "/description/:id",
     element: <JobDescription />,
   },
-
   {
     path: "/browse",
     element: <Browse />,
@@ -45,37 +44,61 @@ const appRouter = createBrowserRouter([
     path: "/profile",
     element: <Profile />,
   },
-  //admin
+  // admin ke liye yha se start hoga
   {
     path: "/admin/companies",
-    element: <Companies />,
+    element: (
+      <ProtectedRoute>
+        <Companies />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/companies/create",
-    element: <CompanyCreate />,
+    element: (
+      <ProtectedRoute>
+        <CompanyCreate />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/companies/:id",
-    element: <CompanySetup />,
+    element: (
+      <ProtectedRoute>
+        <CompanySetup />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs",
-    element: <AdminJobs />,
+    element: (
+      <ProtectedRoute>
+        <AdminJobs />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs/create",
-    element: <PostJob />,
+    element: (
+      <ProtectedRoute>
+        <PostJob />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs/:id/applicants",
-    element: <Applicants />,
+    element: (
+      <ProtectedRoute>
+        <Applicants />
+      </ProtectedRoute>
+    ),
   },
 ]);
 function App() {
   return (
-    <>
+    <div>
       <RouterProvider router={appRouter} />
-    </>
+    </div>
   );
 }
 
