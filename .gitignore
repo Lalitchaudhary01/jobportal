@@ -1,4 +1,5 @@
 # Node.js specific
+.env
 node_modules/
 npm-debug.log*
 yarn-debug.log*
