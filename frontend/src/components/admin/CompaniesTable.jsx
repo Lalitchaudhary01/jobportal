@@ -20,6 +20,7 @@ const CompaniesTable = () => {
   );
   const [filterCompany, setFilterCompany] = useState(companies);
   const navigate = useNavigate();
+
   useEffect(() => {
     const filteredCompany =
       companies.length >= 0 &&
@@ -33,11 +34,12 @@ const CompaniesTable = () => {
       });
     setFilterCompany(filteredCompany);
   }, [companies, searchCompanyByText]);
+
   return (
-    <div>
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       <Table>
         <TableCaption>A list of your recent registered companies</TableCaption>
-        <TableHeader>
+        <TableHeader className="bg-[#6A38C2] text-white">
           <TableRow>
             <TableHead>Logo</TableHead>
             <TableHead>Name</TableHead>
@@ -47,33 +49,40 @@ const CompaniesTable = () => {
         </TableHeader>
         <TableBody>
           {filterCompany?.map((company) => (
-            <tr>
+            <TableRow key={company._id} className="hover:bg-gray-50">
               <TableCell>
                 <Avatar>
-                  <AvatarImage src={company.logo} />
+                  <AvatarImage
+                    className="rounded-full border-2 border-[#6A38C2]"
+                    src={company.logo}
+                  />
                 </Avatar>
               </TableCell>
-              <TableCell>{company.name}</TableCell>
-              <TableCell>{company.createdAt.split("T")[0]}</TableCell>
+              <TableCell className="text-lg font-medium text-gray-800">
+                {company.name}
+              </TableCell>
+              <TableCell className="text-gray-500">
+                {company.createdAt.split("T")[0]}
+              </TableCell>
               <TableCell className="text-right cursor-pointer">
                 <Popover>
                   <PopoverTrigger>
-                    <MoreHorizontal />
+                    <MoreHorizontal className="text-gray-600 hover:text-[#6A38C2] transition-colors" />
                   </PopoverTrigger>
-                  <PopoverContent className="w-32">
+                  <PopoverContent className="w-32 bg-white shadow-md rounded-md">
                     <div
                       onClick={() =>
                         navigate(`/admin/companies/${company._id}`)
                       }
-                      className="flex items-center gap-2 w-fit cursor-pointer"
+                      className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer"
                     >
-                      <Edit2 className="w-4" />
-                      <span>Edit</span>
+                      <Edit2 className="w-4 text-[#6A38C2]" />
+                      <span className="text-gray-700">Edit</span>
                     </div>
                   </PopoverContent>
                 </Popover>
               </TableCell>
-            </tr>
+            </TableRow>
           ))}
         </TableBody>
       </Table>

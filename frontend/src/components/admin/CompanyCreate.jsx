@@ -14,6 +14,7 @@ const CompanyCreate = () => {
   const navigate = useNavigate();
   const [companyName, setCompanyName] = useState();
   const dispatch = useDispatch();
+
   const registerNewCompany = async () => {
     try {
       const res = await axios.post(
@@ -34,35 +35,48 @@ const CompanyCreate = () => {
       }
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong. Please try again.");
     }
   };
+
   return (
-    <div>
+    <div className="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen">
       <Navbar />
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto p-6 sm:px-8">
         <div className="my-10">
-          <h1 className="font-bold text-2xl">Your Company Name</h1>
-          <p className="text-gray-500">
-            What would you like to give your company name? you can change this
+          <h1 className="font-bold text-3xl text-gray-800">
+            Your Company Name
+          </h1>
+          <p className="text-gray-600 mt-2">
+            What would you like to give your company name? You can change this
             later.
           </p>
         </div>
 
-        <Label>Company Name</Label>
-        <Input
-          type="text"
-          className="my-2"
-          placeholder="JobHunt, Microsoft etc."
-          onChange={(e) => setCompanyName(e.target.value)}
-        />
-        <div className="flex items-center gap-2 my-10">
+        <div className="mb-6">
+          <Label className="text-lg text-gray-700">Company Name</Label>
+          <Input
+            type="text"
+            className="my-2 p-3 border-2 border-gray-300 rounded-md w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-[#6A38C2]"
+            placeholder="JobHunt, Microsoft, etc."
+            onChange={(e) => setCompanyName(e.target.value)}
+          />
+        </div>
+
+        <div className="flex items-center gap-4 mt-8">
           <Button
             variant="outline"
             onClick={() => navigate("/admin/companies")}
+            className="border-gray-600 text-gray-700 hover:bg-gray-200 transition duration-300"
           >
             Cancel
           </Button>
-          <Button onClick={registerNewCompany}>Continue</Button>
+          <Button
+            onClick={registerNewCompany}
+            className="bg-[#6A38C2] text-white hover:bg-[#5b30a6] transition duration-300"
+          >
+            Continue
+          </Button>
         </div>
       </div>
     </div>

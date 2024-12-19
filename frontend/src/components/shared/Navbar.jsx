@@ -30,46 +30,64 @@ const Navbar = () => {
       toast.error(error.response.data.message);
     }
   };
+
   return (
-    <div className="bg-white">
-      <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
+    <div className="bg-gradient-to-r from-gray-100 to-gray-200 shadow-md">
+      <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-6">
+        {/* Logo */}
         <div>
-          <h1 className="text-2xl font-bold">
-            Job<span className="text-[#F83002]">Portal</span>
+          <h1 className="text-3xl font-extrabold text-gray-800">
+            Hire<span className="text-[#FF4500]">Sphere</span>
           </h1>
         </div>
-        <div className="flex items-center gap-12">
-          <ul className="flex font-medium items-center gap-5">
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-8">
+          <ul className="flex font-medium items-center gap-6 text-gray-700">
             {user && user.role === "recruiter" ? (
               <>
                 <li>
-                  <Link to="/admin/companies">Companies</Link>
+                  <Link to="/admin/companies" className="hover:text-[#FF4500]">
+                    Companies
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/admin/jobs">Jobs</Link>
+                  <Link to="/admin/jobs" className="hover:text-[#FF4500]">
+                    Jobs
+                  </Link>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" className="hover:text-[#FF4500]">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/jobs">Jobs</Link>
+                  <Link to="/jobs" className="hover:text-[#FF4500]">
+                    Jobs
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/browse">Browse</Link>
+                  <Link to="/browse" className="hover:text-[#FF4500]">
+                    Browse
+                  </Link>
                 </li>
               </>
             )}
           </ul>
+
+          {/* Auth Section */}
           {!user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <Link to="/login">
-                <Button variant="outline">Login</Button>
+                <Button variant="outline" className="border-gray-600">
+                  Login
+                </Button>
               </Link>
               <Link to="/signup">
-                <Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">
+                <Button className="bg-[#6A38C2] text-white hover:bg-[#5b30a6]">
                   Signup
                 </Button>
               </Link>
@@ -80,38 +98,41 @@ const Navbar = () => {
                 <Avatar className="cursor-pointer">
                   <AvatarImage
                     src={user?.profile?.profilePhoto}
-                    alt="@shadcn"
+                    alt="Profile Photo"
                   />
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className="w-80">
-                <div className="">
+                <div>
+                  {/* User Profile Info */}
                   <div className="flex gap-2 space-y-2">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
                         src={user?.profile?.profilePhoto}
-                        alt="@shadcn"
+                        alt="Profile Photo"
                       />
                     </Avatar>
                     <div>
-                      <h4 className="font-medium">{user?.fullname}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="font-medium text-gray-800">
+                        {user?.fullname}
+                      </h4>
+                      <p className="text-sm text-gray-500">
                         {user?.profile?.bio}
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col my-2 text-gray-600">
+
+                  {/* Profile and Logout Links */}
+                  <div className="flex flex-col my-4 text-gray-600">
                     {user && user.role === "student" && (
-                      <div className="flex w-fit items-center gap-2 cursor-pointer">
+                      <div className="flex items-center gap-2 cursor-pointer">
                         <User2 />
                         <Button variant="link">
-                          {" "}
                           <Link to="/profile">View Profile</Link>
                         </Button>
                       </div>
                     )}
-
-                    <div className="flex w-fit items-center gap-2 cursor-pointer">
+                    <div className="flex items-center gap-2 cursor-pointer">
                       <LogOut />
                       <Button onClick={logoutHandler} variant="link">
                         Logout

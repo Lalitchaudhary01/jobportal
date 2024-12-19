@@ -79,22 +79,22 @@ const CompanySetup = () => {
   }, [singleCompany]);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-green-100 to-teal-200 min-h-screen">
       <Navbar />
-      <div className="max-w-xl mx-auto my-10">
+      <div className="max-w-4xl mx-auto p-6 sm:px-8">
         <form onSubmit={submitHandler}>
-          <div className="flex items-center gap-5 p-8">
+          <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
             <Button
               onClick={() => navigate("/admin/companies")}
               variant="outline"
-              className="flex items-center gap-2 text-gray-500 font-semibold"
+              className="flex items-center gap-2 text-gray-600 font-semibold"
             >
               <ArrowLeft />
               <span>Back</span>
             </Button>
-            <h1 className="font-bold text-xl">Company Setup</h1>
+            <h1 className="font-bold text-xl text-gray-800">Company Setup</h1>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
             <div>
               <Label>Company Name</Label>
               <Input
@@ -102,6 +102,7 @@ const CompanySetup = () => {
                 name="name"
                 value={input.name}
                 onChange={changeEventHandler}
+                className="my-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6A38C2]"
               />
             </div>
             <div>
@@ -111,6 +112,7 @@ const CompanySetup = () => {
                 name="description"
                 value={input.description}
                 onChange={changeEventHandler}
+                className="my-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6A38C2]"
               />
             </div>
             <div>
@@ -120,6 +122,7 @@ const CompanySetup = () => {
                 name="website"
                 value={input.website}
                 onChange={changeEventHandler}
+                className="my-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6A38C2]"
               />
             </div>
             <div>
@@ -129,6 +132,7 @@ const CompanySetup = () => {
                 name="location"
                 value={input.location}
                 onChange={changeEventHandler}
+                className="my-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6A38C2]"
               />
             </div>
             <div>
@@ -137,16 +141,20 @@ const CompanySetup = () => {
                 type="file"
                 accept="image/*"
                 onChange={changeFileHandler}
+                className="my-2 p-3 border-2 border-gray-300 rounded-md"
               />
             </div>
           </div>
+
           {loading ? (
-            <Button className="w-full my-4">
-              {" "}
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
+            <Button className="w-full my-4 bg-gray-600 text-white">
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait...
             </Button>
           ) : (
-            <Button type="submit" className="w-full my-4">
+            <Button
+              type="submit"
+              className="w-full my-4 bg-[#6A38C2] text-white hover:bg-[#5b30a6] transition duration-300"
+            >
               Update
             </Button>
           )}
