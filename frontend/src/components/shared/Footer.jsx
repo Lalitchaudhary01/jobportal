@@ -2,18 +2,24 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-600 to-blue-800 py-8 text-white">
+    <footer className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 py-8 text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0 text-center md:text-left">
-            <h2 className="text-2xl font-bold">Job Hunt</h2>
-            <p className="text-sm">© 2024 Your Company. All rights reserved.</p>
+          {/* Brand Section */}
+          <div className="mb-6 md:mb-0 text-center md:text-left">
+            <h2 className="text-3xl font-semibold tracking-tight hover:text-gray-200 transition-all">
+              Job Hunt
+            </h2>
+            <p className="text-sm mt-2">
+              © 2024 Job Hunt, All rights reserved.
+            </p>
           </div>
 
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          {/* Social Links */}
+          <div className="flex space-x-8 mt-4 md:mt-0">
             <a
               href="https://facebook.com"
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="text-white hover:text-blue-300 transition-colors duration-300"
               aria-label="Facebook"
             >
               <svg
@@ -27,7 +33,7 @@ const Footer = () => {
             </a>
             <a
               href="https://twitter.com"
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="text-white hover:text-blue-300 transition-colors duration-300"
               aria-label="Twitter"
             >
               <svg
@@ -41,7 +47,7 @@ const Footer = () => {
             </a>
             <a
               href="https://linkedin.com"
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="text-white hover:text-blue-300 transition-colors duration-300"
               aria-label="LinkedIn"
             >
               <svg
@@ -55,6 +61,17 @@ const Footer = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Footer Divider */}
+      <div className="mt-8 border-t border-gray-300 opacity-40"></div>
+
+      {/* Disclaimer Section */}
+      <div className="container mx-auto px-4 mt-4 text-center">
+        <p className="text-sm text-gray-300">
+          <span>&#169; 2024 Job Hunt. All Rights Reserved. </span>
+          <span>Privacy Policy | Terms of Service</span>
+        </p>
       </div>
     </footer>
   );

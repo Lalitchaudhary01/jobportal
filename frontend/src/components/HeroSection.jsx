@@ -23,10 +23,10 @@ const HeroSection = () => {
             Your #1 Destination for Jobs
           </span>
           <h1 className="text-6xl font-extrabold text-gray-800 leading-tight">
-            Discover, Apply & <br />
-            Land Your{" "}
+            Unlock New Opportunities <br />
+            and Build the Career <br />
             <span className="text-[#6A38C2] underline decoration-wavy">
-              Dream Job
+              You’ve Always Wanted
             </span>
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
