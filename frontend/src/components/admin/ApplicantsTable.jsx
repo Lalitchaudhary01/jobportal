@@ -27,7 +27,7 @@ const ApplicantsTable = () => {
         `${APPLICATION_API_END_POINT}/status/${id}/update`,
         { status }
       );
-      console.log(res);
+
       if (res.data.success) {
         toast.success(res.data.message);
       }
