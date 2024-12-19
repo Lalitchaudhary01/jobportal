@@ -13,8 +13,8 @@ import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { USER_API_END_POINT } from "@/utils/constant";
-import { toast } from "sonner";
 import { setUser } from "@/redux/authSlice";
+import { toast } from "sonner";
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +29,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     file: user?.profile?.resume || "",
   });
   const dispatch = useDispatch();
+
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };

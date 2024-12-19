@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import Navbar from "./shared/Navbar";
-import { Avatar } from "./ui/avatar";
-import { AvatarImage } from "@radix-ui/react-avatar";
-import { Label } from "./ui/label";
+import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Contact, Mail, Pen } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { Label } from "./ui/label";
 import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
 
-// const skills = ["React", "Node", "Express", "MongoDB"];
+// const skills = ["Html", "Css", "Javascript", "Reactjs"]
 const isResume = true;
 
 const Profile = () => {
+  useGetAppliedJobs();
   const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
 
@@ -24,10 +25,7 @@ const Profile = () => {
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
-              <AvatarImage
-                src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
-                alt="profile"
-              />
+              <AvatarImage src={user?.profile?.profilePhoto} alt="profile" />
             </Avatar>
             <div>
               <h1 className="font-medium text-xl">{user?.fullname}</h1>
@@ -53,7 +51,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="my-5">
-          <h1></h1>
+          <h1>Skills</h1>
           <div className="flex items-center gap-1">
             {user?.profile?.skills.length !== 0 ? (
               user?.profile?.skills.map((item, index) => (
